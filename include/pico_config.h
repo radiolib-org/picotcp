@@ -215,6 +215,8 @@ static inline uint64_t long_long_be(uint64_t le)
 # include "arch/pico_arm9.h"
 #elif defined ESP8266
 # include "arch/pico_esp8266.h"
+#elif defined ESP32
+# include "arch/pico_esp32.h"
 #elif defined ATSAMD21J18
 # include "arch/pico_atsamd21j18.h"
 #elif defined MT7681

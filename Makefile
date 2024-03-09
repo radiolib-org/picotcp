@@ -202,6 +202,28 @@ ifeq ($(ARCH),esp8266)
   CFLAGS+=-DESP8266 -Wl,-EL -fno-inline-functions -nostdlib -mlongcalls -mtext-section-literals
 endif
 
+# TODO do this in CMake without having to modify picotcp
+ifeq ($(ARCH),esp32)
+  CFLAGS+=-DESP32 -Wl,-EL -fno-inline-functions -nostdlib -mlongcalls -mtext-section-literals -Wno-format
+  CFLAGS+=-I../../../build/config
+  CFLAGS+=-I$(IDF_PATH)/components/freertos/FreeRTOS-Kernel/include
+  CFLAGS+=-I$(IDF_PATH)/components/freertos/FreeRTOS-Kernel/portable/xtensa/include
+  CFLAGS+=-I$(IDF_PATH)/components/freertos/esp_additions/include/freertos
+  CFLAGS+=-I$(IDF_PATH)/components/freertos/esp_additions/include
+  CFLAGS+=-I$(IDF_PATH)/components/freertos/esp_additions/include
+  CFLAGS+=-I$(IDF_PATH)/components/esp_timer/include
+  CFLAGS+=-I$(IDF_PATH)/components/xtensa/include
+  CFLAGS+=-I$(IDF_PATH)/components/xtensa/esp32/include
+  CFLAGS+=-I$(IDF_PATH)/components/esp_hw_support/include
+  CFLAGS+=-I$(IDF_PATH)/components/soc/include
+  CFLAGS+=-I$(IDF_PATH)/components/soc/esp32/include
+  CFLAGS+=-I$(IDF_PATH)/components/esp_common/include
+  CFLAGS+=-I$(IDF_PATH)/components/esp_system/include
+  CFLAGS+=-I$(IDF_PATH)/components/newlib/platform_include
+  CFLAGS+=-I$(IDF_PATH)/components/heap/include
+  CFLAGS+=-I$(IDF_PATH)/components/esp_rom/include
+endif
+
 ifeq ($(ARCH),mt7681)
   CFLAGS+=-DMT7681 -fno-builtin -ffunction-sections -fno-strict-aliasing -m16bit -mabi=2 -mbaseline=V2 -mcpu=n9 -mno-div -mel -mmw-count=8 -mno-ext-mac -mno-dx-regs
 endif
