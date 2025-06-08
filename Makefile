@@ -207,7 +207,9 @@ ifeq ($(ARCH),esp32)
   CFLAGS+=-DESP32 -Wl,-EL -fno-inline-functions -nostdlib -mlongcalls -mtext-section-literals -Wno-format
   CFLAGS+=-I../../../build/config
   CFLAGS+=-I$(IDF_PATH)/components/freertos/FreeRTOS-Kernel/include
-  CFLAGS+=-I$(IDF_PATH)/components/freertos/FreeRTOS-Kernel/portable/xtensa/include
+  CFLAGS+=-I$(IDF_PATH)/components/freertos/FreeRTOS-Kernel/portable/xtensa/include/freertos
+  CFLAGS+=-I$(IDF_PATH)/components/freertos/config/include/freertos
+  CFLAGS+=-I$(IDF_PATH)/components/freertos/config/xtensa/include
   CFLAGS+=-I$(IDF_PATH)/components/freertos/esp_additions/include/freertos
   CFLAGS+=-I$(IDF_PATH)/components/freertos/esp_additions/include
   CFLAGS+=-I$(IDF_PATH)/components/freertos/esp_additions/include
